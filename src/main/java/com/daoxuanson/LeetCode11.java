@@ -6,7 +6,7 @@ public class LeetCode11 {
         int j = height.length - 1;
         int area;
         int max = 0;
-        while (i <= j) {
+        while (i < j) {
             area = (j - i) * Math.min(height[i], height[j]);
             max = Math.max(max, area);
             if (height[i] < height[j]) {

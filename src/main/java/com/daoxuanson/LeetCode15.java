@@ -1,50 +1,38 @@
 package com.daoxuanson;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LeetCode15 {
     public static List<List<Integer>> threeSum(int[] nums) {
-        long number0 = Arrays.stream(nums).filter(n -> n == 0).count();
-        if (number0 >= 3) {
-            return List.of(List.of(0, 0, 0));
-        }
-        int n = nums.length;
-        if (n < 3) return new ArrayList<>();
-        List<List<Integer>> results = new ArrayList<>();
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            if (map.containsKey(nums[i])) {
-                map.put(nums[i], i + map.get(nums[i]));
-            } else {
-                map.put(nums[i], i);
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        int k, j, sum, size = nums.length;
+        for (int i = 0; i < size - 2; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) {
+                continue;
             }
-
-        }
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = i + 1; j < n; j++) {
-                int sum = nums[i] + nums[j];
-                int k = -1 * sum;
-                if (map.containsKey(k)) {
-                    int index = map.get(k);
-                    if (k == nums[i] && index != i) {
-                        index = index - i;
-                    } else if (k == nums[j] && index != j) {
-                        index = index - j;
-                    }
-                    if (index > -1 && index < n && i < j && j < index) {
-                        List<Integer> result = new ArrayList<>();
-                        result.add(nums[i]);
-                        result.add(nums[j]);
-                        result.add(k);
-                        if (!results.contains(result)) {
-                            results.add(result);
-                        }
-                    }
+            j = i + 1;
+            k = size - 1;
+            while (j < k) {
+                sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    while (j < k && nums[j] == nums[j + 1]) j++;
+                    while (j < k && nums[k] == nums[k - 1]) k--;
+                    j++;
+                    k--;
+                } else if (sum < 0) {
+                    j++;
+                } else {
+                    k--;
                 }
             }
         }
 
-        return results;
+
+        return result;
     }
 
 

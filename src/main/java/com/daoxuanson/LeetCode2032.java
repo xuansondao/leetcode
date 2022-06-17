@@ -9,7 +9,7 @@ public class LeetCode2032 {
         for (int j : nums1) {
             map.put(j, false);
         }
-        int temp2[] = new int[101];
+        int[] temp2 = new int[101];
         for (int j : nums2) {
             if (temp2[j] == 0 && map.containsKey(j)) {
                 map.put(j, true);
@@ -18,7 +18,7 @@ public class LeetCode2032 {
                 temp2[j]++;
             }
         }
-        int temp3[] = new int[101];
+        int[] temp3 = new int[101];
         for (int j : nums3) {
             if (temp3[j] == 0 && map.containsKey(j)) {
                 map.put(j, true);

@@ -17,7 +17,7 @@ public class MaxConsecutiveOnes {
                 counter++;
                 if (i + 1 < length && nums[i + 1] == 1) {
                     counter++;
-                    if (i == length - 1) {
+                    if (i+1 == length - 1) {
                         if (max < counter) {
                             max = counter;
                         }
@@ -41,7 +41,7 @@ public class MaxConsecutiveOnes {
     }
 
     public static void main(String[] args) {
-        System.out.println(findMaxConsecutiveOnes(new int[]{1, 1, 0, 1, 1, 1}));
+        System.out.println(findMaxConsecutiveOnes(new int[]{1,1,0,1,1,1}));
     }
 
 }

@@ -1,46 +1,43 @@
 package com.daoxuanson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class LeetCode17 {
+    static char[][] letters = new char[][]{
+            {'a', 'b', 'c'},
+            {'d', 'e', 'f'},
+            {'g', 'h', 'i'},
+            {'j', 'k', 'l'},
+            {'m', 'n', 'o'},
+            {'p', 'q', 'r', 's'},
+            {'t', 'u', 'v'},
+            {'w', 'x', 'y', 'z'}
+    };
+
     public static List<String> letterCombinations(String digits) {
-        var map = new HashMap<String, List<String>>();
-        map.put("2", List.of("a", "b", "c"));
-        map.put("3", List.of("d", "e", "f"));
-        map.put("4", List.of("g", "h", "i"));
-        map.put("5", List.of("j", "k", "l"));
-        map.put("6", List.of("m", "n", "o"));
-        map.put("7", List.of("a", "b", "c"));
-        map.put("8", List.of("a", "b", "c"));
-        map.put("9", List.of("a", "b", "c"));
-        if (digits.length() == 1) {
-            return map.get(digits);
-        }
-        List<List<String>> list = new ArrayList<>();
+        if (digits.length() == 0) return new ArrayList<>();
+        Set<String> set = new HashSet<>();
+        int numOfCombinations = 1;
         for (int i = 0; i < digits.length(); i++) {
-            list.add(map.get(digits.charAt(i) + ""));
+            int len = letters[digits.charAt(i) - '0' - 2].length;
+            numOfCombinations *= len;
         }
-        List<String> rs = new ArrayList<>();
-        int index = 0;
-        List<String> temp = new ArrayList<>();
-        temp.addAll(list.get(0))
-        for (int i = 1; i < list.size(); i++) {
-            List<String> listString = list.get(i);
-            for (int j = 0; j < temp.size(); j++) {
-                for (int l = 0; l < listString.size(); l++) {
-                    rs.add(index, temp.get(0) + listString.get(l));
-                    index++;
-                }
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        while (set.size() < numOfCombinations) {
+            for (int i = 0; i < digits.length(); i++) {
+                char[] temp = letters[digits.charAt(i) - '0' - 2];
+                int idx = random.nextInt(temp.length);
+                sb.append(temp[idx]);
             }
-            temp.addAll(rs);
+            set.add(sb.toString());
+            sb.setLength(0);
         }
-        return rs;
+        return new ArrayList<>(set);
     }
 
     public static void main(String[] args) {
-        System.out.println(letterCombinations("23"));
+        System.out.println(letterCombinations("23456789"));
     }
 }
 

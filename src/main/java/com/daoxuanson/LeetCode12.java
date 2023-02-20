@@ -3,14 +3,14 @@ package com.daoxuanson;
 //https://leetcode.com/problems/integer-to-roman/
 
 public class LeetCode12 {
-    public  String intToRoman(int num) {
-        return convertThoundsandToRoman(num / 1000)
-                + convertTramToRoman((num / 100) % 10)
-                + convertChucToRoman((num / 10) % 10)
-                + convertDonViToRoman(num % 10);
+    public static String intToRoman(int num) {
+        return new StringBuilder().append(convertThoundsandToRoman(num / 1000))
+                .append(convertTramToRoman((num / 100) % 10))
+                .append(convertChucToRoman((num / 10) % 10))
+                .append(convertDonViToRoman(num % 10)).toString();
     }
 
-    public  String convertDonViToRoman(int num) {
+    public static String convertDonViToRoman(int num) {
         if (num < 4) {
             StringBuilder rs = new StringBuilder();
             while (num-- > 0) {
@@ -32,7 +32,7 @@ public class LeetCode12 {
         }
     }
 
-    public  String convertChucToRoman(int num) {
+    public static String convertChucToRoman(int num) {
         if (num < 4){
             StringBuilder rs = new StringBuilder();
             while (num-- > 0) {
@@ -54,7 +54,7 @@ public class LeetCode12 {
         }
     }
 
-    public  String convertTramToRoman(int num){
+    public static String convertTramToRoman(int num){
         if (num < 4){
             StringBuilder rs = new StringBuilder();
             while (num-- > 0) {
@@ -76,7 +76,7 @@ public class LeetCode12 {
         }
     }
 
-    public  String convertThoundsandToRoman(int num) {
+    public static String convertThoundsandToRoman(int num) {
         StringBuilder rs = new StringBuilder();
         while (num-- > 0) {
             rs.append("M");
@@ -85,7 +85,7 @@ public class LeetCode12 {
         return rs.toString();
     }
 
-    public  void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println(intToRoman(58));
     }
 }

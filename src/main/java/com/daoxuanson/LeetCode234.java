@@ -2,6 +2,7 @@ package com.daoxuanson;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
 
 public class LeetCode234 {
@@ -15,7 +16,7 @@ public class LeetCode234 {
         var count = 0;
         var j = stack.size() -1;
         for (int i = 0; i < stack.size()/2; i++) {
-            if (stack.get(i) == stack.get(j--)){
+            if (Objects.equals(stack.get(i), stack.get(j--))){
                 count++;
             }
         }

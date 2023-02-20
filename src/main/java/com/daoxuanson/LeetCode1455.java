@@ -18,6 +18,6 @@ public class LeetCode1455 {
     }
 
     public static void main(String[] args) {
-        System.out.println(isPrefixOfWord("i am tired", "you"));
+        System.out.println(isPrefixOfWord("i am tired", "am"));
     }
 }

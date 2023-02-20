@@ -5,18 +5,18 @@ import java.util.Map;
 
 public class LeetCode1528 {
     public static String restoreString(String s, int[] indices) {
-        Map<Integer, Character> map = new HashMap<>();
-        char[] chars = s.toCharArray();
-        int length = indices.length;
-        for (int i = 0; i < length; ++i) {
-            map.put(indices[i], chars[i]);
-        }
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < length; ++i) {
-            result.append(map.get(i));
-        }
 
-        return result.toString();
+        int length=s.length();
+        StringBuilder sb=new StringBuilder("");
+        char c[]=new char[length];
+
+        for(int i=0;i<length;i++){
+
+            c[indices[i]]=s.charAt(i);
+
+        }
+        sb.append(c);
+        return sb.toString();
     }
 
     public static void main(String[] args) {

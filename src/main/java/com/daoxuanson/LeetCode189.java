@@ -2,13 +2,18 @@ package com.daoxuanson;
 
 public class LeetCode189 {
     public static void rotate(int[] nums, int k) {
-        int size = nums.length;
-        k = k % size;
-        reverse(nums, 0, size - 1);
-        reverse(nums, 0, k - 1);
-        reverse(nums, k, size - 1);
-
-
+        while( nums.length - k < 0) {
+            k = k - nums.length;
+        }
+        if( nums.length - k == 0 ) {
+            return;
+        }
+        int[] left = new int[nums.length -k];
+        System.arraycopy(nums,0,left,0,left.length);
+        int[] right = new int[k];
+        System.arraycopy(nums,left.length,right,0,right.length);
+        System.arraycopy(right,0,nums,0,right.length);
+        System.arraycopy(left,0,nums,right.length,left.length);
     }
 
     public static void reverse(int[] res, int start, int end) {

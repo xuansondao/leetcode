@@ -11,4 +11,8 @@ public class LeetCode3 {
         }
         return ans;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

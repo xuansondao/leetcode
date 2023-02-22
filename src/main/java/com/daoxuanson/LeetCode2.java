@@ -29,4 +29,8 @@ public class LeetCode2 {
         }
         return dummyHead.next;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

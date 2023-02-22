@@ -17,4 +17,8 @@ public class LeetCode1 {
         }
         throw new IllegalArgumentException("No two sum solution");
     }
+
+    public static void main(String[] args) {
+
+    }
 }

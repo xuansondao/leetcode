@@ -14,4 +14,8 @@ public class LeetCode9 {
         }
         return x == rev;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

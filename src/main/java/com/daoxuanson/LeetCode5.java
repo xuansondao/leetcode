@@ -42,6 +42,9 @@ public class LeetCode5 {
         }
 
         return longest;
+    }
+
+    public static void main(String[] args) {
 
     }
 }

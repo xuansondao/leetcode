@@ -4,37 +4,36 @@ import java.util.Arrays;
 
 public class LeetCode1011 {
     public int shipWithinDays(int[] a, int days) {
-        int l = 0;
-        int h = Arrays.stream(a).sum();
-        while (l < h) {
-            int m = l + (h-l)/2;
-            if (isEnough(a, m, days)){
-                h = m;
-            }
-            else{
-                l = m + 1;
-            }
+        int lo = 0, hi = 0;
+        for (int j : a) {
+            lo = Math.max(lo, j);
+            hi += j;
         }
-        return l;
+
+        while (lo < hi) {
+            int mid = lo + (hi - lo)/2;
+            if (check(mid, a, days))
+                hi = mid;
+            else
+                lo = mid + 1;
+        }
+
+        return lo;
     }
 
 
-    public boolean isEnough(int[] a, int m, int d) {
-        int count = 1;
-        int sum = 0;
-        for (int w : a) {
-            if (w > m){
-                return false;
-            }
-            if ((sum += w) > m) {
-
-                if (++count > d){
-                    return false;
-                }
-                sum = w;
+    boolean check(int capacity, int[] weights, int days) {
+        int currentWeight = 0;
+        --days;
+        for (int weight : weights) {
+            if (currentWeight + weight <= capacity)
+                currentWeight += weight;
+            else {
+                --days;
+                currentWeight = weight;
             }
         }
-        return true;
+        return days >= 0;
     }
 
     public static void main(String[] args) {

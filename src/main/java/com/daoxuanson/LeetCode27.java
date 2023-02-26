@@ -8,7 +8,6 @@ public class LeetCode27 {
                 nums[k++] = nums[i];
             }
         }
-
         return k;
     }
 

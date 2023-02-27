@@ -1,6 +1,6 @@
 package com.daoxuanson;
 
-public class LeetCode1450 {
+public class    LeetCode1450 {
     public static int busyStudent(int[] startTime, int[] endTime, int queryTime) {
         int count = 0;
         for (int i = 0; i < startTime.length; i++) {

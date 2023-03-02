@@ -14,6 +14,7 @@ public class LeetCode347 {
         }
 
         int[] results = new int[k];
+
         for (int i = 0; i < k; i++)
             results[i] = pq.poll().getKey();
 
